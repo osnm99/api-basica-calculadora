@@ -64,10 +64,11 @@ def dividir(datos: Operacion):
 
 @app.post("/potencia", status_code=status.HTTP_200_OK)
 def potencia(datos: Operacion):
-    """Eleva un numero a una potencia"""
-    potencia=1
+    """Eleva un número a una potencia"""
     if datos.b == 0:
-        potencia=1
-    else if datos.b > 0:
-        potencia=datos.a**datos.b
-    return {"resultado": potencia}
+        resultado = 1
+    elif datos.b > 0:
+        resultado = datos.a ** datos.b
+    else:
+        resultado = datos.a ** datos.b
+    return {"resultado": resultado}
