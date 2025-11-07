@@ -35,6 +35,15 @@ def restar(a: float, b: float):
     """Resta dos números enviados como parámetros."""
     return {"resultado": a - b}
 
+@app.get("/factorial", status_code=status.HTTP_200_OK)
+def factorial(n: int):
+    """Calcula factorial de un numero."""
+    fact=1
+    for i in range(1,n+1):
+        fact=fact*i
+
+    return {"resultado": fact}
+
 # ----------------------------
 # POST con cuerpo JSON
 # ----------------------------
@@ -52,3 +61,13 @@ def dividir(datos: Operacion):
             detail="No se puede dividir entre cero"
         )
     return {"resultado": datos.a / datos.b}
+
+@app.post("/potencia", status_code=status.HTTP_200_OK)
+def potencia(datos: Operacion):
+    """Eleva un numero a una potencia"""
+    potencia=1
+    if datos.b == 0:
+        potencia=1
+    else if datos.b > 0:
+        potencia=datos.a**datos.b
+    return {"resultado": potencia}
